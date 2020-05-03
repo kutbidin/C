@@ -1,0 +1,52 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+
+int generateRandOddEvenNum(char *tekcift,int range)
+{
+    srand(time(NULL));
+    int result=rand()%range+1;
+    if(strcmp(&tekcift,"odd")==0 || strcmp(&tekcift,"1")==0){
+          if(result%2==0)
+           if(result>1)
+             result-=1;
+           else 
+             result+=1;
+        printf("-------  odd number  : %d",result);
+     }
+    else if(strcmp(&tekcift,"even")==0 ||strcmp(&tekcift,"2")==0)
+    {
+          if(result%2!=0)
+            if(result<range)
+              result+=1;
+            else
+              result-=1;
+        printf("------  even number : %d",result);
+    }
+    else 
+      printf("------  random : %d",result);
+    return result;
+}
+       
+int main()
+{
+    char *oddOrEven;
+    int range;
+ entrance:
+    printf("\n **--****----***------***----****--** \n");
+      printf("* Please Enter your choise :     *****");
+    printf("\n* .\t1  or odd for Odd number     *");
+    printf("\n* .\t2  or even for Even number   *"); 
+    printf("\n*\t choise:");
+    scanf("%s",&oddOrEven);
+    
+      printf("* please enter the range 1 ~ x    ****");
+    printf("\n* .\t x:");
+    scanf("%d",&range);
+    generateRandOddEvenNum(oddOrEven,range);
+    printf("\n **--****----***------***----****--** \n");
+ goto entrance; 
+
+}
